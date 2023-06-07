@@ -34,28 +34,31 @@ $('#currentDay').text(today.format('MMM D, YYYY, HH:ss'));
 todayTime =(today.format('h:mm:ss a'));
 
 
-var period9El =document.getElementsByClassName("period9");
-var period10El=document.getElementsByClassName("period10");
-var period11El=document.getElementsByClassName("period11");
-var saveButton=document.querySelector("period9");
+var period9El =document.getElementById("period9");
+var period10El=document.getElementById("period10");
+var period11El=document.getElementById("period11");
+var saveButton=document.getElementById("Btn9");
+
+
 
 function saveLastPeriods() {
 var allPeriods={
   period9El  : period9El.value,
-  period10El : period10El.valu,
+  period10El : period10El.value,
   period11El : period11El.value
 };
 localStorage.setItem("allPeriods", JSON.stringify(allPeriods));
 }
 
+console.log(allPeriods);
 
 function renderallPeriods() {
-var lastallPeriods=JSON.parse(localStorage.getitem("allPeriods"));
+var lastallPeriods=JSON.parse(localStorage.getItem("allPeriods"));
 if (lastallPeriods !==null) {
 
-  document.getElementsByClassName("period9").innerHTML = lastallPeriods.period9El;
-  document.getElementsByClassName("period10").innerHTML = lastallPeriods.period10El;
-  document.getElementsByClassName("period11").innerHTML = lastallPeriods.period11El;
+  document.getElementById("period9").innerHTML = lastallPeriods.period9El;
+  document.getElementById("period10").innerHTML = lastallPeriods.period10El;
+  document.getElementById("period11").innerHTML = lastallPeriods.period11El;
 
 
 }else {
@@ -64,7 +67,7 @@ if (lastallPeriods !==null) {
 }
 
 saveButton.addEventListener("click", function(event) {
-//event.preventDefault();
+event.preventDefault();
 saveLastPeriods();
 renderallPeriods();
 })
